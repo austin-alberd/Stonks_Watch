@@ -18,16 +18,20 @@ window.title("Portfolio Builder")
 def add_to_db():
     try:
         exchange=exchange_input_box.get("0.0","end")
+        exchange=exchange.upper()
         ticker=ticker_input_box.get("0.0","end")
+        ticker=ticker.upper()
         shares = shares_input_box.get("0.0","end")
         cur.execute(f""" 
         INSERT INTO portfolio VALUES
             ("{ticker}","{exchange}","{shares}")
         """)
         con.commit()
-        print(f"successfuly added the current values: Ticker:{ticker}  Exchange:{exchange}   Shares:{shares}")
+        print(f"successfuly added the current values: Ticker:{ticker}  Exchange:{exchange}   Shares:{shares}")    
     except:
         print("Aw Shucks an error occoured")
+
+
 #whacky widgets
 #ticker input 
 ticker_input_box = customtkinter.CTkTextbox(window,height=25)

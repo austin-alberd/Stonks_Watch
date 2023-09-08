@@ -13,3 +13,16 @@ def get_codes_from_db():
     for x in range(len(exchange)):
         codes.append(f"{exchange[x][0].split()[0]}:{ticker[x][0].split()[0]}")
     return codes
+
+
+def get_shares_from_db():
+    import sqlite3
+    con = sqlite3.connect('portfolio.db')
+    cur=con.cursor()
+    shares = cur.execute("SELECT shares FROM portfolio")
+    shares = shares.fetchall()
+    clean_shares=[]
+    for x in range(len(shares)):
+        clean_shares.append(shares[x][0].split()[0])
+    return clean_shares
+

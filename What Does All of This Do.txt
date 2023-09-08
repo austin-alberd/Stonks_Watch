@@ -1,0 +1,14 @@
+db_editor.py
+allows for users to add stocks to their portfolio database
+
+db_init.py
+makes the database and table
+
+scraper.py
+pulls different data from finance.google.com
+
+main.py
+The GUI
+
+pull_from_db.py
+pulls data from the DB to be passed into the scraper

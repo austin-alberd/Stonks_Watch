@@ -1,0 +1,21 @@
+ticker=input("What is the ticker ")
+exchange=input("What is the exchange ")
+shares=int(input("How many shares "))
+
+cur.execute(f""" 
+    INSERT INTO portfolio VALUES
+        ("{ticker}","{exchange}","{shares}")
+""")
+
+#setup connection and cursor
+con =sqlite3.connect("portfolio.db")
+cur = con.cursor()
+
+#fetch data from the database
+ticker =cur.execute("SELECT ticker FROM portfolio")
+ticker= ticker.fetchall()
+exchange = cur.execute("SELECT exchange FROM portfolio")
+exchange = exchange.fetchall()
+
+print(ticker)
+print(exchange)
